@@ -1,3 +1,14 @@
+@import "./signupandlogin.module.css";
+@import "./dashboard.module.css";
+@import "./homepage.module.css";
+@import "./navbar.module.css";
+@import "./sidebar.module.css";
+@import "./insights.module.css";
+@import "./offers.module.css";
+@import "./storeinfo.module.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "react-toastify/dist/ReactToastify.css";
+
 html,
 body {
   padding: 0;
@@ -6,21 +17,44 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.sidebyside{
+  display: flex;
 }
 
-* {
-  box-sizing: border-box;
+.pinkbutton{
+  background-color:  #DE0C55;
+  color: white;
+  border-color: #DE0C55;
+  padding-right: 4rem;
+  padding-left: 4rem;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.logoutbuttonsidebar{
+  background-color:  #DE0C55;
+  color: white;
+  border-color: #DE0C55;
+  margin: 8px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

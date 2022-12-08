@@ -1,0 +1,96 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* text-align: center; */
+    box-shadow: 2px 2px 34px rgb(216, 207, 207);
+    width: 10rem;
+    height: auto;
+}
+
+.storenamediv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+}
+
+.sidebardashboard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* align-items - to get in same line */
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebardashboard:hover{
+    background: #F1F3F4;
+    color: #DD0C55;  
+}
+
+.hoverbgsidebaricons:hover{
+    background-color: #dc2b69;
+}
+.sidebarstoreinfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebarstoreinfo:hover{
+    background: #F1F3F4;
+    color: #DD0C55;
+}
+
+.sidebarinsights{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebarinsights:hover{
+    background: #F1F3F4;
+    color: #DD0C55;
+}
+
+.sidebaroffers{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebaroffers:hover{
+    background: #F1F3F4;
+    color: #DD0C55;
+}
+
+.sidebarfirst{
+    /* border-bottom: 1px solid black; */
+    border-top: 1.00412px solid #B5B5B8;
+    border-bottom: 1.00412px solid #B5B5B8;
+
+}
+
+.sidebarlogout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.sidebarlogout:hover{
+    background: #F1F3F4;
+    color: #DD0C55;
+}
+
+.sidebarlast{
+    border-bottom: 1.00412px solid #B5B5B8;
+}

@@ -1,0 +1,40 @@
+
+
+.homepagerootdiv{
+    /* align-items: center; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* background-color: #eed5e2; */
+    height: 100%;
+    width: 100%;
+   
+}
+
+.steps{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin: 50px; */
+    gap: 4rem;
+   
+}
+
+.retailshoppingstore{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+/* .pinkbutton{
+    background-color:  #DE0C55;
+    color: white;
+    border-color: #DE0C55;
+    padding-right: 4rem;
+    padding-left: 4rem;
+
+} */

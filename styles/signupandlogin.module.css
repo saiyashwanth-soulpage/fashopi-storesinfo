@@ -1,0 +1,188 @@
+.layer {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background-image: url("/Layer0.png");
+}
+
+.center {
+  position: absolute;
+  left: 25.48%;
+  right: 25.48%;
+  top: 14.67%;
+  bottom: 14.52%;
+  display: flex;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 21.354px rgba(0, 0, 0, 0.28);
+}
+
+.right {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+}
+
+.options {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 6rem;
+  margin-left: 22%;
+}
+
+.options > p:nth-child(1):hover {
+  border-bottom: 2px solid #dd0c55;
+}
+
+.options > p:nth-child(2):hover {
+  border-bottom: 2px solid #dd0c55;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+}
+.agree {
+  font-size: 10px;
+}
+
+.borderbottom {
+  border: transparent;
+  border-bottom: 1px solid black;
+}
+
+.loginbutton {
+  color: white;
+  background-color: #dd0c55;
+}
+
+.signupform {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupbutton {
+  color: white;
+  background-color: #dd0c55;
+}
+
+.textdownbutton {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 11px;
+}
+
+.errormessage {
+  color: red;
+}
+
+.fashopilogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+/* .login{
+margin: 9px;
+position: absolute;
+left: 51.95%;
+right: 45.13%;
+top: 19.31%;
+bottom: 77.81%;
+}
+
+.signup{
+margin: 9px;
+position: absolute;
+left: 63.22%;
+right: 32.83%;
+top: 19.31%;
+bottom: 77.81%;
+} */
+
+/* .center{
+position: absolute;
+left: 25.48%;
+right: 25.48%;
+top: 14.67%;
+bottom: 14.52%;
+
+background: #FFFFFF;
+box-shadow: 0px 0px 21.354px rgba(0, 0, 0, 0.28);
+}
+
+.layer{
+    background: url('/Layer0.jpg');
+}
+
+.left{
+    display: flex;
+    flex: 1;
+}
+
+.right{
+    display: flex;
+    flex: 1;
+}
+
+.leftimage{
+    position: absolute;
+    left: 25.48%;
+    right: 50%;
+    top: 14.67%;
+    bottom: 14.52%;
+    } 
+
+
+.leftimagetext1{
+    position: absolute;
+left: 29.72%;
+right: 54.32%;
+top: 44.18%;
+bottom: 50.68%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.leftimagetext2{
+position: absolute;
+left: 37.41%;
+right: 54.32%;
+top: 51.13%;
+bottom: 46.44%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.right{
+    position: absolute;
+width: 281.43px;
+height: 275.27px;
+left: 709.57px;
+top: 127.66px;
+
+} */

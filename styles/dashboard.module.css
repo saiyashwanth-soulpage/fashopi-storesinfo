@@ -1,0 +1,21 @@
+
+.dashboarddiv{
+   height: 100%;
+   width: 100%;
+   /* background-color:#f1efef; */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+/* .storesindashboard{
+   border: 2px solid black;
+   border-radius: 5px;
+} */
+
+/* .storesrender{
+   display: flex;
+   flex-direction: column;
+   border: 2px solid black;
+} */
