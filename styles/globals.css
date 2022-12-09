@@ -6,6 +6,7 @@
 @import "./insights.module.css";
 @import "./offers.module.css";
 @import "./storeinfo.module.css";
+@import "./allstores.module.css";
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "react-toastify/dist/ReactToastify.css";
 
@@ -17,44 +18,26 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.sidebyside{
+.sidebyside {
   display: flex;
 }
 
-.pinkbutton{
-  background-color:  #DE0C55;
+.pinkbutton {
+  background-color: #de0c55;
   color: white;
-  border-color: #DE0C55;
+  border-color: #de0c55;
   padding-right: 4rem;
   padding-left: 4rem;
-
 }
 
-.logoutbuttonsidebar{
-  background-color:  #DE0C55;
+.logoutbuttonsidebar {
+  background-color: #de0c55;
   color: white;
-  border-color: #DE0C55;
+  border-color: #de0c55;
   margin: 8px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* .red {
+  color: red;
+  background-color: black;
+} */

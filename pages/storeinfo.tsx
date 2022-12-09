@@ -10,6 +10,8 @@ import axios from "axios";
 import cookie from "js-cookie";
 import Router from "next/router";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+
 const authService = new AuthenticationService()
 
 export default function Storeinfo() {
@@ -57,12 +59,12 @@ export default function Storeinfo() {
       authService
       .storeinfo(storesxyz)
       .then((res: any) => {
-        alert("Store Created !");
+        toast.success("Store Created ", { autoClose: 2000 });
         router.push("/dashboard");
 
      })
      .catch((err: any) => {
-       alert(err.message)
+       toast.error(err.message);
      });
   };
 
@@ -77,11 +79,11 @@ export default function Storeinfo() {
 
           <div className="storeinfodivroot">
             <form onSubmit={handleSubmit(onSubmitstoreinfo)}>
-              <h2>Store Info</h2>
+              <h5 className="text-muted">Store Info</h5>
 
               <div className="aboutdiv">
                 <div className="aboutandedit">
-                  <h3 className="abouth3">About</h3>
+                  <h4 className="abouth3">About</h4>
                   {/* <Image src={Edit} alt="edit" className="aboutimgeedit" /> */}
                 </div>
 
@@ -147,7 +149,7 @@ export default function Storeinfo() {
 
               <div className="contactdiv">
                 <div className="contactandedit">
-                  <h3>Contact</h3>
+                  <h4>Contact</h4>
                   {/* <Image src={Edit} alt="edit" /> */}
                 </div>
 

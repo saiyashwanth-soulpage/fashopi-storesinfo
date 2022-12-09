@@ -1,10 +1,11 @@
-import Signupandlogin from "./signupandlogin"
+import Allstores from "./allstores"
+// import Signupandlogin from "./signupandlogin"
 
 export default function Home() {
   return (
     
     <div>
-      <Signupandlogin />
+      <Allstores />
     </div>
   
   )

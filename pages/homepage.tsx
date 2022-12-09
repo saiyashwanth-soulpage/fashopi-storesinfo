@@ -46,7 +46,7 @@ export default function homepage(){
           
 
         <h2>Here is how Fashopi helps you</h2>
-        <p>Lorem ipsum dolor sit amet.</p>
+        {/* <p>Lorem ipsum dolor sit amet.</p> */}
 
      <div className="steps">
         <div className="step1">

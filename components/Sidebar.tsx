@@ -7,14 +7,15 @@ import Offersicon from "../public/offerssidebar.png";
 import Logouticon from "../public/logout.png";
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function Sidebar() {
   const router = useRouter();
 
   async function handleLogout() {
-    alert("logged out");
+    toast.success("Logged out ", { autoClose: 1000 });
     cookie.remove("accessToken");
-    router.push("/signupandlogin");
+    router.push("/allstores");
   }
 
   return (
@@ -24,7 +25,7 @@ export default function Sidebar() {
       </div>
 
       <div className="sidebarfirst">
-        <Link href="/dashboard">
+        <Link href="/dashboard" className="hideMenuUnderline text-muted">
           <div className="sidebardashboard">
             <Image
               src={Dashboardicon}
@@ -34,8 +35,9 @@ export default function Sidebar() {
             <p>Dashboard</p>
           </div>
         </Link>
+        {/* <a href="#">dsfsdfsdf</a> */}
 
-        <Link href="/storeinfo">
+        <Link href="/storeinfo" className="hideMenuUnderline text-muted">
           <div className="sidebarstoreinfo">
             <Image
               src={Storeinfoicon}
@@ -46,7 +48,7 @@ export default function Sidebar() {
           </div>
         </Link>
 
-        <Link href="/insights">
+        <Link href="/insights" className="hideMenuUnderline text-muted">
           <div className="sidebarinsights">
             <Image
               src={Insightsicon}
@@ -57,7 +59,7 @@ export default function Sidebar() {
           </div>
         </Link>
 
-        <Link href="/offers">
+        <Link href="/offers" className="hideMenuUnderline text-muted">
           <div className="sidebaroffers">
             <Image
               src={Offersicon}

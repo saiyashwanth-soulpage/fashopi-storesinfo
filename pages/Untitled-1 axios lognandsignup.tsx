@@ -33,7 +33,6 @@ export default function Dashboard() {
       .catch(() => Router.push("/signupandlogin"));
   }, [render]);
 
-
   // update store function
   const updateStore = (id: any) => {
     console.log(id)
@@ -53,6 +52,15 @@ export default function Dashboard() {
         toast.error(e.message);
       });
   };
+
+  // const updateStore1 = (data: any) => {
+  //   console.log(data);
+  //   const updatedata: any = {
+  //     title: data.title,
+  //     description: data.desciption,
+  //     phone: data.phone,
+  //     website: data.website,
+  //   };
 
   // delete store function
   const deleteStore = (id: any) => {

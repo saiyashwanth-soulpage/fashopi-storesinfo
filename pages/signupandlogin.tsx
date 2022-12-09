@@ -1,4 +1,5 @@
 import Image from "next/image";
+// import Pinkfade from "../public/pinkfade.png";
 import Leftimage from "../public/Rectangleleftsignup.png";
 import Fashpilogo from "../public/fashpilogo.png";
 // for form validations
@@ -61,7 +62,7 @@ export default function Signupandlogin() {
         console.log(res);
         console.log(res.authToken_is_anyname);
         cookie.set("accessToken", res.authToken_is_anyname);
-        toast.success("Login successfull ", { autoClose: 3000 });
+        toast.success("Login successfull ", { autoClose: 2000 });
         // authService.authenticateUser(res?.token);
         router.push("/homepage");
       })
@@ -107,12 +108,14 @@ export default function Signupandlogin() {
     <div className="layer">
       <div className="center">
         <div className="left">
+
+          {/* <Image src={Pinkfade} alt="fade" className="pinkfade"/> */}
           <Image
             src={Leftimage}
             alt="image"
             className="leftimage"
-            width={300}
-            height={431}
+            // width={300}
+            // height={431}
           />
         </div>
 
@@ -167,7 +170,7 @@ export default function Signupandlogin() {
                 {errors.password?.message}
                 <button className="loginbutton">Login</button>
                 <p className="textdownbutton">
-                  You agree with our terms of use & privacy policy by signing up
+                  You agree with our terms of use & privacy policy by logging in.
                 </p>
               </form>
             )}
