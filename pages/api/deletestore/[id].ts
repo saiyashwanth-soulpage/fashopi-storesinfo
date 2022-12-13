@@ -14,14 +14,4 @@ export default authenticated(async function handler2(
     });
     res.status(200).json({ message: "Success" });
   }
-
-  
-  if (req.method === "PUT") {
-    console.log(Number(req.query.id))
-    const updatestore = await prisma.store.update({
-      where: { id: Number(req.query.id) },
-      data:{...req.body}
-    });
-    res.status(200).json({ message: "Success" });
-  }
 });

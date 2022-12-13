@@ -11,7 +11,6 @@ import AuthenticationService from "services/authentication.service";
 import cookie from "js-cookie";
 import { toast } from "react-toastify";
 
-
 export default function Signupandlogin() {
   const authService = new AuthenticationService();
 
@@ -23,20 +22,25 @@ export default function Signupandlogin() {
     formState: { errors },
   }: any = useForm();
 
+  
   // for login & signup routes
   const [forlogin, setForlogin] = useState(true);
+  
+  // boderbottom
+  const [borderlogin, setBorderlogin] = useState("login");
 
   const loginroute = () => {
     setForlogin(true);
+    setBorderlogin("login");
   };
 
   const signuproute = () => {
     setForlogin(false);
+    setBorderlogin("signup");
   };
 
   useEffect(() => {
-    if (router.query.forlogin !== undefined) 
-    loginroute();
+    if (router.query.forlogin !== undefined) loginroute();
   }, []);
 
   // for validations in email and password (pattern) in login page
@@ -73,7 +77,6 @@ export default function Signupandlogin() {
     // or like this - axios .post("api/login", xyz) .then((res: any) => {
   };
 
-
   // for signup form submission
   const onSubmit2 = (data: any) => {
     console.log(data);
@@ -90,7 +93,7 @@ export default function Signupandlogin() {
       .then((res: any) => {
         console.log(res);
         // alert("Account created successfully. Please login !");
-        toast.success("Account created successfully. Please login !")
+        toast.success("Account created successfully. Please login !");
         router.push("/signupandlogin?forlogin");
       })
       .catch((err: any) => {
@@ -103,12 +106,10 @@ export default function Signupandlogin() {
   // this is error object in console. see it for better understanding
   console.log("errors object is", errors);
 
-
   return (
     <div className="layer">
       <div className="center">
         <div className="left">
-
           {/* <Image src={Pinkfade} alt="fade" className="pinkfade"/> */}
           <Image
             src={Leftimage}
@@ -121,10 +122,24 @@ export default function Signupandlogin() {
 
         <div className="right">
           <div className="options">
-            <p className="login" onClick={loginroute}>
+            <p
+              className="login"
+              onClick={loginroute}
+              style={{
+                borderBottom:
+                  borderlogin === "login" ? "2px solid #dd0c55" : "none",
+              }}
+            >
               Login
             </p>
-            <p className="signup" onClick={signuproute}>
+            <p
+              className="signup"
+              onClick={signuproute}
+              style={{
+                borderBottom:
+                  borderlogin === "signup" ? "2px solid #dd0c55" : "none",
+              }}
+            >
               Signup
             </p>
           </div>
@@ -170,7 +185,8 @@ export default function Signupandlogin() {
                 {errors.password?.message}
                 <button className="loginbutton">Login</button>
                 <p className="textdownbutton">
-                  You agree with our terms of use & privacy policy by logging in.
+                  You agree with our terms of use & privacy policy by logging
+                  in.
                 </p>
               </form>
             )}

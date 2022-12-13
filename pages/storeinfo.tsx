@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import Image from "next/image";
 import Navbar from "components/Navbar";
 import { Button } from "react-bootstrap";
 import Sidebar from "components/Sidebar";
+import Image from "next/image";
 import Edit from "../public/edit.png";
 import AuthenticationService from "services/authentication.service";
 import { useEffect } from "react";

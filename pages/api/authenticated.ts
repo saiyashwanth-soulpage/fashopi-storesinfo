@@ -6,4 +6,4 @@ export default authenticated(async function handler(
   res: NextApiResponse
 ) {
   res.status(200).json({ message: "Authenticated" });
-  });
+});

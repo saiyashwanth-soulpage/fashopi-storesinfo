@@ -8,6 +8,9 @@
    justify-content: center;
    align-items: center;
 }
+.btn-update{
+   margin-left: 20px;
+}
 
 /* .storesindashboard{
    border: 2px solid black;
