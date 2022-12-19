@@ -1,31 +1,35 @@
-import { toast } from "react-toastify";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import axios from "axios";
-import Navbar from "components/Navbar";
-import Sidebar from "components/Sidebar";
+// import HeroNavbar from "../components/HeroNavbar";
+import Heronav from "../components/Heronav";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import cookie from "js-cookie";
 import Router from "next/router";
-import Table from "react-bootstrap/Table";
+import { toast } from "react-toastify";
 import Image from "next/image";
 import Update from "../public/edit1.png";
 import Delete from "../public/delete.png";
 
+
 export default function Dashboard() {
-  const [show, setShow] = useState<any>(false);
+  // form
   const { register, handleSubmit, formState, trigger } = useForm<any>();
 
-  const [updatedStore, setUpdatedStore] = useState<any>({});
-  const [showupdateChanges , setShowupdateChanges] = useState<any>(false) 
+  // for modal
+  const [showmodal, setShowmodal] = useState<any>(false);
 
-  const handleShow = () => setShow(true);
-  const { errors } = formState;
+  // for inserting updatexyz
+  const [updatedStore, setUpdatedStore] = useState<any>({});
+
+  // to apply update after receiving updatexyz data
+  const [applyChanges, setApplyChanges] = useState<any>(false);
+
   const [render, setRender] = useState(false);
+
+  // for displaying
   const [data, setData] = useState([]);
 
+  // for get user stores
   useEffect(() => {
     axios
       .get("api/dashboard", {
@@ -64,23 +68,23 @@ export default function Dashboard() {
       });
   };
 
-  // update store function
-  const updateStoreHandler = (data : any) => {
-    const updatedData = {
+  // inserting updated data to a variable
+  const onSubmitData = (data: any) => {
+    console.log(data);
+    const updatexyz = {
       title: data.title,
       description: data.description,
-      email: data.email,
-      website: data.website,
       phone: data.phone,
-      fullAddress: data.fullAddress,
-      location: data.location,
-      popularFor: data.popularFor,
+      website: data.website,
     };
-    setUpdatedStore(updatedData);
+    setUpdatedStore(updatexyz);
+    // check in console
     console.log(updatedStore);
-    setShowupdateChanges(true)
+    // make true for apply changes
+    setApplyChanges(true);
   };
 
+  // update store function
   const updateStore = async (id: any) => {
     console.log(id);
     updatedStore &&
@@ -106,229 +110,207 @@ export default function Dashboard() {
           alert(e.message);
         }));
   };
-  const handleClose = () => {
-    setShow(false);
-  };
 
   return (
-    <>
-      <Navbar />
+    <div>
+      <Heronav/>
 
-      <div className="sidebyside">
-        <Sidebar />
-        <div className="dashboarddiv">
-          <h1>Your Stores</h1>
+      <header className="bg-white shadow">
+        <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+            Dashboard
+          </h1>
+        </div>
+      </header>
 
-          <div className="storesindashboardd">
-            {data.map((abcd) => {
-              const {
-                id,
-                title,
-                description,
-                popular_for,
-                address,
-                location,
-                pincode,
-                phone,
-                email,
-                website,
-                created_at,
-              } = abcd;
-              return (
-                <>
-                  <div key={id}>
-                    <div className="storesrender">
-                      <div id="modal-window">
-                        <Modal show={show} onHide={handleClose}>
-                          <Modal.Header>
-                            <Modal.Title>Update Store Information</Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body>
-                            <form onSubmit={handleSubmit(updateStoreHandler)}>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Title
-                                </label>
-                                <input
-                                  type="text"
-                                  {...register("title", { required: true })}
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter Store title"
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  E-mail
-                                </label>
-                                <input
-                                  {...register("email")}
-                                  type="email"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter Store E-mail address"
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Phone number
-                                </label>
-                                <input
-                                  {...register("phone")}
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter phone number "
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Full Address
-                                </label>
-                                <input
-                                  {...register("fullAddress")}
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter Full Address "
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Location
-                                </label>
-                                <input
-                                  {...register("location")}
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter Location of Store "
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Website
-                                </label>
-                                <input
-                                  {...register("website")}
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Enter Website of your Store "
-                                />
-                              </div>
-                              <div className="mb-3">
-                                <label
-                                  htmlFor="exampleFormControlInput1"
-                                  className="form-label"
-                                >
-                                  Popular For
-                                </label>
-                                <input
-                                  {...register("popularFor")}
-                                  type="text"
-                                  className="form-control"
-                                  id="exampleFormControlInput1"
-                                  placeholder="Your Store Popular for... "
-                                />
-                              </div>
+      {/* custom render space */}
+      <main>
+        <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+          {/* Top replace */}
+          <h5 className="text-muted">Your Stores</h5>
+          <div className="px-4 py-6 sm:px-0">
+            {/* write main */}
+            {/* Lorem, ipsum dolor - MAIN */}
 
-                              <Form.Group
-                                className="mb-3"
-                                controlId="exampleForm.ControlTextarea1"
-                              >
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                  as="textarea"
-                                  {...register("description")}
-                                  rows={3}
-                                />
-                              </Form.Group>
-
-                              <div className="text-center">
-                                <button
-                                  type="submit"
-                                  className="btn btn-danger me-2"
-                                  onClick={handleClose}
-                                >
-                                  Submit
-                                </button>
-                              </div>
-                            </form>
-                            
-                          </Modal.Body>
-                        </Modal>
+            {showmodal ? (
+              <>
+                <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                      <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+                        <h3 className="text-3xl font=semibold">
+                          Update Store Info
+                        </h3>
                       </div>
-                      <Table striped bordered hover>
-                        <thead>
-                          <tr>
-                            <th>Store Id</th>
-                            <th>Store Name</th>
-                            <th>Description</th>
-                            <th>Phone</th>
-                            <th>Website</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{id}</td>
-                            <td>{title}</td>
-                            <td>{description}</td>
-                            <td>{phone}</td>
-                            <td>{website}</td>
-                            <td>
-                              <Image
-                                src={Update}
-                                alt="update"
-                                onClick={handleShow}
-                              />
-                              {showupdateChanges && <Button
-                                onClick={() => updateStore(id)}
-                                variant="danger"
-                                className="btn-update"
+
+                      <div className="relative p-6 flex-auto">
+                        <form
+                          onSubmit={handleSubmit(onSubmitData)}
+                          className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full"
+                        >
+                          {/* title */}
+                          <label className="block text-black text-sm font-bold mb-1">
+                            Title
+                          </label>
+                          <input
+                            className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                            type="text"
+                            {...register("title", { required: true })}
+                            placeholder="Enter Store title"
+                          />
+
+                          {/* description */}
+                          <label className="block text-black text-sm font-bold mb-1">
+                            Description
+                          </label>
+                          <input
+                            className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                            type="text"
+                            {...register("description", { required: true })}
+                            placeholder="Enter Description"
+                          />
+
+                          {/* phone no */}
+                          <label className="block text-black text-sm font-bold mb-1">
+                            Phone Number
+                          </label>
+                          <input
+                            className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                            type="text"
+                            {...register("phone", { required: true })}
+                            placeholder="Enter Phone number"
+                          />
+
+                          {/* website */}
+                          <label className="block text-black text-sm font-bold mb-1">
+                            Website
+                          </label>
+                          <input
+                            className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                            type="text"
+                            {...register("website", { required: true })}
+                            placeholder="Enter Website"
+                          />
+
+                          {/* button */}
+                          <div className="text-center">
+                            <button
+                              type="submit"
+                              className="edge rounded-lg border-2 mt-4 hover:border-pink-900"
+                            >
+                              Submit
+                            </button>
+                            <div>
+                              <button
+                                onClick={() => setShowmodal(false)}
+                                className="edge rounded-lg border-2 mt-4 hover:border-pink-900"
                               >
-                                <span>Apply Changes</span>
-                              </Button>}
-                            </td>
-                            <td>
-                              <Image
-                                src={Delete}
-                                alt="delete"
-                                onClick={() => deleteStore(id)}
-                              />
-                            </td>
-                          </tr>
-                          <tr></tr>
-                        </tbody>
-                      </Table>
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </>
-              );
-            })}
+                </div>
+              </>
+            ) : null}
+
+            <div>
+              {/* render Stores in a table */}
+
+              {/* table */}
+              <div className="flex items-center justify-center">
+                <div>
+                  <table className="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+                    <thead className="text-white">
+                      <tr className="bg-pink-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                        <th className="p-3 text-left">Store Id</th>
+                        <th className="p-3 text-left">Store Name</th>
+                        <th className="p-3 text-left w-28">Description</th>
+                        <th className="p-3 text-left">Phone</th>
+                        <th className="p-3 text-left">Website</th>
+                        <th className="p-3 text-left">Update</th>
+                        <th className="p-3 text-left">Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody className="flex-1 sm:flex-none">
+                      {data.map((abcd) => {
+                        const {
+                          id,
+                          title,
+                          description,
+                          popular_for,
+                          address,
+                          location,
+                          pincode,
+                          phone,
+                          email,
+                          website,
+                          created_at,
+                        } = abcd;
+                        return (
+                          <>
+                            <tr
+                              key={id}
+                              className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
+                            >
+                              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                {abcd.id}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                {abcd.title}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                {abcd.description}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                                {abcd.phone}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
+                                {abcd.website}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer flex items-center justify-center gap-1">
+                                <Image
+                                  src={Update}
+                                  alt="update"
+                                  onClick={() => setShowmodal(true)}
+                                />
+                                {/* apply changes after modal */}
+                                {applyChanges && (
+                                  <button
+                                    onClick={() => updateStore(id)}
+                                    className="ring-2 ring-pink-500 ring-inset text-black hover:ring-4 hover:bg-white"
+                                  >
+                                    <span>Apply Changes</span>
+                                  </button>
+                                )}
+                              </td>
+                              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                                <Image
+                                  src={Delete}
+                                  alt="delete"
+                                  onClick={() => deleteStore(id)}
+                                />
+                              </td>
+                            </tr>
+                          </>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* table end here */}
+            </div>
           </div>
+          {/* /End replace */}
+          {/* End of the page */}
         </div>
-      </div>
-    </>
+      </main>
+    </div>
   );
 }

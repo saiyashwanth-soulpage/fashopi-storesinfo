@@ -5,8 +5,6 @@ import Step2 from "../public/step2.png";
 import Step3 from "../public/step3.png";
 import Retailshoppingstore from "../public/retailshoppingstore.png";
 import Link from "next/link";
-import Navbar from "components/Navbar";
-import Sidebar from "components/Sidebar";
 // import AuthenticationService from "services/authentication.service";
 import axios from "axios";
 import cookie from "js-cookie";
@@ -37,10 +35,10 @@ export default function homepage(){
   
     return(
       <>
-      <Navbar/>
+      
 
       <div className="sidebyside">
-      <Sidebar/>
+      
         <div className="homepagerootdiv">
 
           

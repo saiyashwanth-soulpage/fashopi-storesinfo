@@ -4,6 +4,14 @@ import cookie from "js-cookie";
 
 abstract class APIService {
 
+  getAxiosHeaders(): any {
+    const token = cookie.get('accessToken');
+    return {
+      Authorization: token ? `Bearer ${token}` : '',
+      'Content-Type': 'application/json',
+    };
+  }
+
   // Axios get method
   get(url: string): AxiosPromise<any> {
     return axios({ method: "GET", url});
@@ -15,6 +23,7 @@ abstract class APIService {
       method: "POST",
       url,
       data,
+      // or headers like this ?
       headers:{ Authorization: `Bearer ${cookie.get("accessToken")}` },
     });
   }
@@ -25,6 +34,7 @@ abstract class APIService {
       method: "PUT",
       url,
       data,
+      headers: this.getAxiosHeaders(),
     });
   }
   // Axios delete method

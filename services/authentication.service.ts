@@ -1,6 +1,6 @@
 import axios from "axios";
 import APIService from "./api.service";
-import { LOG_IN, SIGN_UP, STORE_INFO } from "lib/endpoints";
+import { LOG_IN, SIGN_UP, STORE_INFO, UPDATE_STORE } from "lib/endpoints";
 
 class AuthenticationService extends APIService {
 
@@ -44,6 +44,16 @@ class AuthenticationService extends APIService {
   //  storeinfo
   storeinfo(data: any): Promise<any> {
     return this.post(`${STORE_INFO}`, data)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error: any) => {
+        throw error.response.data;
+      });
+  }
+
+  updatestore(data: any): Promise<any> {
+    return this.put(`${UPDATE_STORE}`, data)
       .then((res) => {
         return res.data;
       })

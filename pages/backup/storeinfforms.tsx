@@ -10,8 +10,10 @@ import { toast } from "react-toastify";
 
 const authService = new AuthenticationService();
 
+
 export default function storeinfforms() {
-  const router = useRouter();
+
+   const router = useRouter();
 
   const {
     register,
@@ -78,10 +80,7 @@ export default function storeinfforms() {
 
       <div className="px-12 pb-10 pt-2">
         <div>
-          <form
-            onSubmit={handleSubmit(onSubmitstoreinfo)}
-            className="md:gap-y-6"
-          >
+          <form onSubmit={handleSubmit(onSubmitstoreinfo)} className="md:gap-y-6">
             {/* top */}
             <div className="md:flex md:justify-between md:p-2 md:shadow-xl">
               <h3>About</h3>

@@ -10,14 +10,8 @@ import { toast } from "react-toastify";
 
 const authService = new AuthenticationService();
 
-export default function storeinfforms() {
+export default function Storeinfo() {
   const router = useRouter();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   useEffect(() => {
     axios
@@ -35,6 +29,12 @@ export default function storeinfforms() {
       )
       .catch(() => Router.push("/signupandlogin"));
   }, []);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmitstoreinfo = (data: any) => {
     // console.log(data);
@@ -63,7 +63,6 @@ export default function storeinfforms() {
   };
 
   console.log("errors object is", errors);
-
   return (
     <>
       <HeroNavbar />
@@ -76,210 +75,180 @@ export default function storeinfforms() {
         </div>
       </header>
 
-      <div className="px-12 pb-10 pt-2">
-        <div>
-          <form
-            onSubmit={handleSubmit(onSubmitstoreinfo)}
-            className="md:gap-y-6"
-          >
-            {/* top */}
-            <div className="md:flex md:justify-between md:p-2 md:shadow-xl">
-              <h3>About</h3>
+      <div className="bg">
+        <div className="sidebyside">
+          {/* <Sidebar /> */}
 
-              {/* top left */}
+          <div className="storeinfodivroot">
+            <form onSubmit={handleSubmit(onSubmitstoreinfo)}>
+              {/* <h5 className="text-muted">Store Info</h5> */}
 
-              <div className="lefttttttttt">
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+              <div className="aboutdiv mt-3">
+                <div className="aboutandedit">
+                  <h4 className="abouth3">About</h4>
+                  {/* <Image src={Edit} alt="edit" className="aboutimgeedit" /> */}
+                </div>
+
+                <div className="rowtype">
+                  <div className="aboutdetails">
+                    <label> Store Name </label>
                     <input
                       type="text"
                       placeholder="Store Name"
                       {...register("title", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
+
                     {errors.storename && (
                       <span className="errortext">Store name is required</span>
                     )}
-                  </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    <label> Popular for </label>
                     <input
                       type="text"
                       placeholder="Popular for"
                       {...register("popularFor", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
-                      <span className="errortext">Popular for is required</span>
-                    )}
-                  </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    {errors.popularfor && (
+                      <span className="errortext">Field is required</span>
+                    )}
+
+                    <label> Tags ( Seperated by Commas) </label>
                     <input
                       type="text"
                       placeholder="Tags"
                       {...register("tags", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
-                      <span className="errortext">Tags are required</span>
-                    )}
+                    <br />
                   </div>
-                </div>
-              </div>
 
-              {/* top right */}
-
-              <div className="topright">
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                  <div className="descriptiondiv">
+                    <label>Description</label>
                     <input
                       type="text"
-                      placeholder="Description"
+                      placeholder="maximum of 500 characters"
                       {...register("description", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
+                      style={{ height: "160px", width: "260px" }}
                     />
-                    {errors.storename && (
+
+                    {errors.description && (
                       <span className="errortext">Description is required</span>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* bottom */}
+              <br />
+              <br />
 
-            <div className="md:flex md:justify-between md:p-2 md:shadow-xl">
-              <h3>Contact</h3>
+              <div className="contactdiv">
+                <div className="contactandedit">
+                  <h4>Contact</h4>
+                  {/* <Image src={Edit} alt="edit" /> */}
+                </div>
 
-              {/* down left */}
-
-              <div className="down-left">
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                <div className="rowtype">
+                  <div className="storefulladdressdiv">
+                    <label> Store full address </label>
                     <input
                       type="text"
                       placeholder="Store full address"
                       {...register("fullAddress", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
-                      <span className="errortext">Address required</span>
+
+                    {errors.fulladdress && (
+                      <span className="errortext">
+                        Full address is required
+                      </span>
                     )}
                   </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                  <div className="contactdetails">
+                    <label>location</label>
                     <input
                       type="text"
                       placeholder="Location"
                       {...register("location", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
+
+                    {errors.location && (
                       <span className="errortext">Location is required</span>
                     )}
-                  </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    <label>pincode</label>
                     <input
                       type="text"
                       placeholder="Pincode"
                       {...register("pincode", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
+
+                    {errors.pincode && (
                       <span className="errortext">Pincode is required</span>
                     )}
-                  </div>
-                </div>
-              </div>
 
-              {/* down right */}
-
-              <div className="downright">
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    <label>Phone</label>
                     <input
                       type="text"
-                      placeholder="Phone"
+                      placeholder="Phone number"
                       {...register("phone", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
+
+                    {errors.phone && (
                       <span className="errortext">
-                        Phone number is required
+                        Phone number is required is required
                       </span>
                     )}
-                  </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    <label>Email Id</label>
                     <input
                       type="text"
-                      placeholder="Email"
+                      placeholder="Email Id"
                       {...register("email", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
-                      <span className="errortext">Email is required</span>
-                    )}
-                  </div>
-                </div>
 
-                <div className="w-full mb-2">
-                  <div className="flex justify-center">
+                    {errors.email && (
+                      <span className="errortext">Email id is required</span>
+                    )}
+
+                    <label>Website</label>
                     <input
                       type="text"
                       placeholder="Website"
                       {...register("website", {
                         required: true,
                       })}
-                      className="px-8  w-full border rounded py-2 text-gray-700 focus:outline-none items-center"
                     />
-                    {errors.storename && (
+
+                    {errors.website && (
                       <span className="errortext">Website is required</span>
                     )}
+                    <br />
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="md:flex md:justify-center md:items-center">
-              <button
-                type="submit"
-                className="w-full mt-6 py-2 rounded bg-pink-600 text-gray-100 focus:outline-none md:w-32 md:rounded-full"
-              >
-                Publish
-              </button>
-            </div>
-          </form>
+              <div className="publishbutton">
+                <button className="pinkbutton">Publish</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

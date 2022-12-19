@@ -1,14 +1,9 @@
-@import "./signupandlogin.module.css";
-@import "./dashboard.module.css";
 @import "./homepage.module.css";
-@import "./navbar.module.css";
-@import "./sidebar.module.css";
-@import "./insights.module.css";
-@import "./offers.module.css";
-@import "./storeinfo.module.css";
-@import "./allstores.module.css";
-@import "bootstrap/dist/css/bootstrap.min.css";
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */
 @import "react-toastify/dist/ReactToastify.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -18,26 +13,35 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.sidebyside {
-  display: flex;
-}
-
-.pinkbutton {
-  background-color: #de0c55;
+.edge {
   color: white;
-  border-color: #de0c55;
-  padding-right: 4rem;
-  padding-left: 4rem;
+  background-color: #dd0c55;
 }
 
-.logoutbuttonsidebar {
-  background-color: #de0c55;
-  color: white;
-  border-color: #de0c55;
-  margin: 8px;
+.youagree {
+  font-size: 4px;
 }
 
-/* .red {
-  color: red;
-  background-color: black;
-} */
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    table {
+      display: inline-table !important;
+    }
+
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
+
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+  }

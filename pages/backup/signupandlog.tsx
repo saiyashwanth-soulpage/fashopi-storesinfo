@@ -1,6 +1,5 @@
 import Image from "next/image";
 // import Pinkfade from "../public/pinkfade.png";
-import Layer from "../public/Layer0.png";
 import Leftimage from "../public/Rectangleleftsignup.png";
 import Fashpilogo from "../public/fashpilogo.png";
 // for form validations
@@ -23,9 +22,10 @@ export default function Signupandlogin() {
     formState: { errors },
   }: any = useForm();
 
+  
   // for login & signup routes
   const [forlogin, setForlogin] = useState(true);
-
+  
   // boderbottom
   const [borderlogin, setBorderlogin] = useState("login");
 
@@ -68,7 +68,7 @@ export default function Signupandlogin() {
         cookie.set("accessToken", res.authToken_is_anyname);
         toast.success("Login successfull ", { autoClose: 2000 });
         // authService.authenticateUser(res?.token);
-        router.push("/dashboard");
+        router.push("/homepage");
       })
       .catch((err: any) => {
         toast.error(err.message);
@@ -97,7 +97,7 @@ export default function Signupandlogin() {
         router.push("/signupandlogin?forlogin");
       })
       .catch((err: any) => {
-        toast.error(err.message);
+        alert(err.message);
       });
 
     //or like this - axios .post("api/signup",xyz) .then((res: any) => {
@@ -107,18 +107,23 @@ export default function Signupandlogin() {
   console.log("errors object is", errors);
 
   return (
-    <div className=" bg-gray-800 w-full h-screen object-cover flex justify-center items-center">
-      {/* for center  */}
-      <div className="w-214 h-48 m-5 flex md:w-2/4 md:h-4/6 lg:w-2/4 lg:h-4/6 xl:w-2/4 xl:h-4/6 2xl:w-2/4 2xl:h-4/6">
-        {/* center 1st half */}
-        <Image className="w-1/2" src={Leftimage} alt="image" />
+    <div className="layer">
+      <div className="center">
+        <div className="left">
+          {/* <Image src={Pinkfade} alt="fade" className="pinkfade"/> */}
+          <Image
+            src={Leftimage}
+            alt="image"
+            className="leftimage"
+            // width={300}
+            // height={431}
+          />
+        </div>
 
-        {/* center 2nd half */}
-        <div className="w-1/2 bg-white flex flex-col gap-2 align-center justify-center px-2">
-          {/* login and signup text */}
-          <div className="flex justify-center items-center gap-2 my-2 text-xs sm:text-sm sm:mb-6 md:text-base md:mb-7 lg:text-lg lg:mb-8 xl:text-xl 2xl:text-2xl ">
+        <div className="right">
+          <div className="options">
             <p
-              className=""
+              className="login"
               onClick={loginroute}
               style={{
                 borderBottom:
@@ -128,7 +133,7 @@ export default function Signupandlogin() {
               Login
             </p>
             <p
-              className=""
+              className="signup"
               onClick={signuproute}
               style={{
                 borderBottom:
@@ -139,16 +144,14 @@ export default function Signupandlogin() {
             </p>
           </div>
 
-          {/* login form */}
-          <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+          {/* for login form */}
+          <div>
             {forlogin && (
-              <form
-                className="flex flex-col justify-center gap-2 "
-                onSubmit={handleSubmit(onSubmit1)}
-              >
+              <form className="loginform" onSubmit={handleSubmit(onSubmit1)}>
                 <input
                   type="email"
                   placeholder="Email Id"
+                  className="borderbottom"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -157,12 +160,13 @@ export default function Signupandlogin() {
                     },
                   })}
                 />
+                {/* <p className="errormessage">{errors.email?.message}</p> */}
                 {errors.email?.message}
-          
 
                 <input
                   type="password"
                   placeholder="Password"
+                  className="borderbottom"
                   {...register("password", {
                     required: "Password is required",
                     minLength: {
@@ -177,32 +181,36 @@ export default function Signupandlogin() {
                     },
                   })}
                 />
+                {/* <p className="errormessage">{errors.password?.message}</p> */}
                 {errors.password?.message}
-
-                <button className="edge rounded-sm border-3 mx-2">Login</button>
+                <button className="loginbutton">Login</button>
+                <p className="textdownbutton">
+                  You agree with our terms of use & privacy policy by logging
+                  in.
+                </p>
               </form>
             )}
           </div>
 
           {/* for signup form */}
-          <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+          <div>
             {!forlogin && (
-              <form
-                className="flex flex-col justify-center"
-                onSubmit={handleSubmit(onSubmit2)}
-              >
+              <form className="signupform" onSubmit={handleSubmit(onSubmit2)}>
                 <input
                   type="text"
                   placeholder="First Name"
+                  className="borderbottom"
                   {...register("firstname", {
                     required: { value: true, message: "firstname is required" },
                   })}
                 />
+                {/* <p className="errormessage">{errors.firstname?.message}</p> */}
                 {errors.firstname?.message}
 
                 <input
                   type="text"
                   placeholder="Last Name"
+                  className="borderbottom"
                   {...register("lastname", {
                     required: { value: true, message: "lastname is required" },
                   })}
@@ -212,6 +220,7 @@ export default function Signupandlogin() {
                 <input
                   type="tel"
                   placeholder="Mobile number"
+                  className="borderbottom"
                   {...register("mobilenumber", {
                     required: {
                       value: true,
@@ -228,6 +237,7 @@ export default function Signupandlogin() {
                 <input
                   type="email"
                   placeholder="Email"
+                  className="borderbottom"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -241,6 +251,7 @@ export default function Signupandlogin() {
                 <input
                   type="password"
                   placeholder="Password"
+                  className="borderbottom"
                   {...register("password", {
                     required: "Password is required",
                     minLength: {
@@ -257,19 +268,14 @@ export default function Signupandlogin() {
                 />
                 {errors.password?.message}
 
-                <button className="edge rounded-sm border-3 mx-2">
-                  Signup
-                </button>
+                <button className="signupbutton">Signup</button>
+                <p className="textdownbutton">
+                  You agree with our terms of use & privacy policy by signing up
+                </p>
               </form>
             )}
           </div>
-
-          <div className="flex flex-col items-center justify-center gap-1">
-            <p className="youagree flex justify-center items-center font-roboto sm:text-xs md:text-xs lg:text-xs xl:text-xs 2xl:text-xs">
-              You agree with our terms by loggingin.
-            </p>
-            <Image src={Fashpilogo} alt="fashopi" className="w-1/3 " />
-          </div>
+          <Image src={Fashpilogo} alt="fashopi" className="fashopilogo" />
         </div>
       </div>
     </div>
